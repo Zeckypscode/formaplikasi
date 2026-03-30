@@ -9,5 +9,8 @@ Aplikasi Form Registrasi With Validation real time code
 ## Screenshot Aplikasi
 <img width="815" height="705" alt="SCREENSHOOT" src="https://github.com/user-attachments/assets/169dab8e-fd06-4d61-b11f-154287a8c2e1" />
 
-# Pesan
-Mohon maaf tidak mencantumkan video dikarenakan device tidak mendukung
+## Video Demo Aplikasi
+
+
+https://github.com/user-attachments/assets/d23145fc-ed15-4b28-9042-c26ca8f554bc
+
