@@ -26,7 +26,7 @@ Instant Feedback: Memberikan peringatan berupa pesan error (misalnya: "Password 
 Logic Criteria: Validasi mencakup pengecekan panjang karakter dan kesesuaian format untuk memastikan integritas data.
 
 
-## Cara Penggunaan (Panduan Demo)
+## Cara Penggunaan
 
 1.  **Input Data:** Masukkan Nama Lengkap, NIM, dan Email pada kolom yang tersedia di halaman utama.
 2.  **Validasi:** Pastikan semua kolom sudah terisi (Aplikasi akan memproses data jika input valid).
