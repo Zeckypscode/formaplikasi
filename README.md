@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/d23145fc-ed15-4b28-9042-c26ca8f554bc
 
 ## Deskripsi Hasil Akhir
 
-## 🚀 Fitur & Komponen Teknis
+## Fitur & Komponen Teknis
 * **Data Input:** Menggunakan `EditText` dengan tipe input yang disesuaikan (Text & Number).
 * **Explicit Intent:** Mekanisme perpindahan halaman dari `MainActivity` ke `TampilDataActivity`.
 * **Data Bundling:** Pengiriman data string dan integer menggunakan metode `.putExtra()` dan pengambilan data melalui `.getStringExtra()`.
@@ -26,11 +26,10 @@ Instant Feedback: Memberikan peringatan berupa pesan error (misalnya: "Password 
 Logic Criteria: Validasi mencakup pengecekan panjang karakter dan kesesuaian format untuk memastikan integritas data.
 
 
-## 🛠️ Cara Penggunaan (Panduan Demo)
+## Cara Penggunaan (Panduan Demo)
 
 1.  **Input Data:** Masukkan Nama Lengkap, NIM, dan Email pada kolom yang tersedia di halaman utama.
 2.  **Validasi:** Pastikan semua kolom sudah terisi (Aplikasi akan memproses data jika input valid).
 3.  **Submit:** Klik tombol **"Kirim Data"** atau **"Proses"**.
 4.  **Halaman Hasil:** Aplikasi akan berpindah ke Activity kedua yang menampilkan seluruh informasi yang telah diinput sebelumnya.
 5.  **Kembali:** Klik tombol **"Kembali"** atau tombol back pada sistem Android untuk mengulangi proses input.
-
