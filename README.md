@@ -28,8 +28,8 @@ Logic Criteria: Validasi mencakup pengecekan panjang karakter dan kesesuaian for
 
 ## Cara Penggunaan
 
-1.  **Input Data:** Masukkan Nama Lengkap, NIM, dan Email pada kolom yang tersedia di halaman utama.
-2.  **Validasi:** Pastikan semua kolom sudah terisi (Aplikasi akan memproses data jika input valid).
+1.  **Input Data:** Masukkan Nama Lengkap dan Email pada kolom yang tersedia di halaman utama.
+2.  **Validasi:** Pastikan semua kolom sudah terisi, buat password dan masukan passrword secara berulang yang sama, jika password tidak sama secara berulang, maka akan gagal saat di submit.
 3.  **Submit:** Klik tombol **"Kirim Data"** atau **"Proses"**.
 4.  **Halaman Hasil:** Aplikasi akan berpindah ke Activity kedua yang menampilkan seluruh informasi yang telah diinput sebelumnya.
 5.  **Kembali:** Klik tombol **"Kembali"** atau tombol back pada sistem Android untuk mengulangi proses input.
