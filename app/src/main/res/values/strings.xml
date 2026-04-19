@@ -1,3 +1,58 @@
 <resources>
-    <string name="app_name">formaplikasi</string>
+    <string name="app_name">Form Registrasi</string>
+    <string name="title_register">Seminar Registration Form</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_email">Email Address</string>
+    <string name="hint_pass">Password</string>
+    <string name="hint_confirm">Confirm Password</string>
+    <string name="label_gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="label_hobbies">Hobbies (Min 3)</string>
+    <string name="hobby_coding">Coding</string>
+    <string name="hobby_gaming">Gaming</string>
+    <string name="hobby_music">Music</string>
+    <string name="hobby_travel">Traveling</string>
+    <string name="btn_reg">REGISTER</string>
+    <string name="saya_menyetujui_data_yang_diinput_benar">Saya menyetujui data yang diinput benar</string>
+    <string name="nomor_hp">Nomor HP</string>
+
+    <string-array name="provinces_array">
+        <item>-- Pilih Domisili --</item>
+        <item>Jawa Barat</item>
+        <item>DKI Jakarta</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+    </string-array>
+
+        <string-array name="seminar_array">
+            <item>-- Pilih Seminar --</item>
+            <item>Web Development with React</item>
+            <item>Mobile Apps with Android Studio</item>
+            <item>Cyber Security Essentials</item>
+            <item>Data Science with Python</item>
+            <item>Cloud Computing Fundamentals</item>
+        </string-array>
+
+        <string name="dialog_title">Konfirmasi</string>
+        <string name="dialog_message">Apakah data yang Anda isi sudah benar?</string>
+        <string name="yes">Ya</string>
+        <string name="no">Tidak</string>
+
+        <string name="title_result">Pendaftaran Berhasil</string>
+        <string name="result_name">Nama: %1$s</string>
+        <string name="result_email">Email: %1$s</string>
+        <string name="result_phone">Nomor HP: %1$s</string>
+        <string name="result_gender">Jenis Kelamin: %1$s</string>
+        <string name="result_seminar">Seminar: %1$s</string>
+        <string name="btn_back">KEMBALI KE BERANDA</string>
+
+        <string name="error_empty">Wajib diisi</string>
+        <string name="error_email">Format email tidak valid</string>
+        <string name="error_phone_prefix">Harus diawali 08</string>
+        <string name="error_phone_length">Panjang 10-13 digit</string>
+        <string name="error_pass_match">Password tidak cocok</string>
+        <string name="error_pass_length">Minimal 6 karakter</string>
+        <string name="error_checkbox">Anda harus menyetujui persyaratan</string>
+        <string name="error_hobbies">Pilih minimal 3 hobi</string>
 </resources>
