@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText etName, etEmail, etPhone, etPassword, etConfirmPassword;
     private RadioGroup rgGender;
     private CheckBox cbCoding, cbGaming, cbMusic, cbTravel, cbAgreement;
-    private Spinner spProvince;
     private Button btnSubmit;
+
+    // 1. Deklarasi variabel Spinner yang Anda maksud
+    private Spinner pilihanSeminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
-        setupSpinner();
+        setupSpinner(); // Panggil tanpa parameter yang membingungkan
         setupListeners();
         setupRealTimeValidation();
     }
@@ -49,14 +51,22 @@ public class MainActivity extends AppCompatActivity {
         cbMusic = findViewById(R.id.cbMusic);
         cbTravel = findViewById(R.id.cbTravel);
         cbAgreement = findViewById(R.id.cbAgreement);
-
-        spProvince = findViewById(R.id.spProvince);
         btnSubmit = findViewById(R.id.btnSubmit);
+
+        // 2. HUBUNGKAN KE XML (Ganti R.id.spProvince dengan ID Spinner di XML Anda)
+        pilihanSeminar = findViewById(R.id.spPilihan_Seminar);
+    }
+
+    // 3. Perbaikan fungsi setupSpinner
+    private void setupSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.pilihan_seminar, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pilihanSeminar.setAdapter(adapter);
     }
 
     private void setupListeners() {
         btnSubmit.setOnClickListener(v -> performSubmission());
-
         btnSubmit.setOnLongClickListener(v -> {
             resetForm();
             return true;
@@ -70,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupRealTimeValidation() {
-        // 1. Validasi Password - Menggunakan getString() untuk hilangkan peringatan kuning
         TextWatcher passwordWatcher = new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -87,12 +96,10 @@ public class MainActivity extends AppCompatActivity {
         etPassword.addTextChangedListener(passwordWatcher);
         etConfirmPassword.addTextChangedListener(passwordWatcher);
 
-        // 2. Validasi Real-time Nomor HP (Kriteria UTS)
         etPhone.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String input = s.toString();
-                // Gunakan !input.isEmpty() untuk mengecek jika data TIDAK kosong
                 if (!input.isEmpty() && !input.startsWith("08")) {
                     tilPhone.setError(getString(R.string.error_phone_prefix));
                 } else {
@@ -101,33 +108,18 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override public void afterTextChanged(Editable s) {}
         });
-
-        // 3. Clear Error Umum
-        etName.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tilName.setError(null);
-            }
-            @Override public void afterTextChanged(Editable s) {}
-        });
     }
 
     private boolean isFormValid() {
         boolean valid = true;
-
-        // Validasi Nama
         if (etName.getText().toString().trim().isEmpty()) {
             tilName.setError(getString(R.string.error_empty));
             valid = false;
         }
-
-        // Validasi Email
         if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.getText().toString().trim()).matches()) {
             tilEmail.setError(getString(R.string.error_email));
             valid = false;
         }
-
-        // Validasi Nomor HP
         String phone = etPhone.getText().toString().trim();
         if (phone.isEmpty()) {
             tilPhone.setError(getString(R.string.error_empty));
@@ -136,19 +128,14 @@ public class MainActivity extends AppCompatActivity {
             tilPhone.setError(getString(R.string.error_phone_length));
             valid = false;
         }
-
-        // Validasi Checkbox Hobi (Minimal 3 sesuai soal)
         if (getSelectedHobbiesCount() < 3) {
             Toast.makeText(this, getString(R.string.error_hobbies), Toast.LENGTH_SHORT).show();
             valid = false;
         }
-
-        // Validasi Persetujuan (Poin 6 Soal UTS)
         if (!cbAgreement.isChecked()) {
             Toast.makeText(this, getString(R.string.error_checkbox), Toast.LENGTH_SHORT).show();
             valid = false;
         }
-
         return valid;
     }
 
@@ -160,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showConfirmationDialog() {
-        // Ambil teks RadioButton yang dipilih (Gender) untuk dikirim ke halaman hasil
         int selectedGenderId = rgGender.getCheckedRadioButtonId();
         String gender = "Tidak dipilih";
         if (selectedGenderId != -1) {
@@ -172,15 +158,15 @@ public class MainActivity extends AppCompatActivity {
 
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.dialog_title))
-                .setMessage(getString(R.string.dialog_message)) // "Apakah data yang Anda isi sudah benar?"
+                .setMessage(getString(R.string.dialog_message))
                 .setPositiveButton(getString(R.string.yes), (d, w) -> {
-                    // Poin 5 Soal UTS: Kirim Nama, Email, Phone, Gender, Seminar
                     Intent intent = new Intent(MainActivity.this, ResultActivity.class);
                     intent.putExtra("NAMA", etName.getText().toString());
                     intent.putExtra("EMAIL", etEmail.getText().toString());
                     intent.putExtra("PHONE", etPhone.getText().toString());
-                    intent.putExtra("GENDER", finalGender); // Menambah kekurangan Gender
-                    intent.putExtra("SEMINAR", spProvince.getSelectedItem().toString());
+                    intent.putExtra("GENDER", finalGender);
+                    // Ambil data dari variabel pilihanSeminar
+                    intent.putExtra("SEMINAR", pilihanSeminar.getSelectedItem().toString());
                     startActivity(intent);
                 })
                 .setNegativeButton(getString(R.string.no), null)
@@ -190,26 +176,18 @@ public class MainActivity extends AppCompatActivity {
     private void resetForm() {
         EditText[] fields = {etName, etEmail, etPhone, etPassword, etConfirmPassword};
         for (EditText f : fields) f.setText("");
-
         TextInputLayout[] layouts = {tilName, tilEmail, tilPhone, tilPassword, tilConfirmPassword};
         for (TextInputLayout l : layouts) l.setError(null);
-
         rgGender.clearCheck();
         cbCoding.setChecked(false);
         cbGaming.setChecked(false);
         cbMusic.setChecked(false);
         cbTravel.setChecked(false);
         cbAgreement.setChecked(false);
-        spProvince.setSelection(0);
+
+        // Reset Spinner
+        if (pilihanSeminar != null) pilihanSeminar.setSelection(0);
 
         Toast.makeText(this, "Form dibersihkan", Toast.LENGTH_SHORT).show();
-    }
-
-    private void setupSpinner() {
-        // Poin 1 Soal UTS: Data seminar dibuat manual di kode/resource
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.seminar_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spProvince.setAdapter(adapter);
     }
 }
