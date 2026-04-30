@@ -7,7 +7,5 @@
 
 ## Video Demo Aplikasi 
 
+Uploading WhatsApp Video 2026-04-30 at 23.25.02.mp4…
 
-## Link Video Full Version
-
-## Deskripsi Hasil Akhir
