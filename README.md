@@ -39,3 +39,8 @@ Clone repository ini.
 Buka project menggunakan Android Studio.
 Pastikan sudah menginstal SDK Android API 33.
 Run menggunakan Emulator (AVD) atau device fisik.
+
+## Noted
+Gunakan id dan password di bawah ini
+ID: admin
+Password: admin123
