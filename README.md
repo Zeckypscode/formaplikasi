@@ -41,6 +41,7 @@ Pastikan sudah menginstal SDK Android API 33.
 Run menggunakan Emulator (AVD) atau device fisik.
 
 ## Noted
-Gunakan id dan password di bawah ini
+Gunakan id dan password ini
+
 ID: admin
 Password: admin123
