@@ -9,7 +9,7 @@
 https://github.com/user-attachments/assets/a81bfb94-575f-4086-8b8f-b4243a61dcad
 
 ## Link Video Presentasi
-https://youtube.com/@z4zaky?si=EQ3YWVCsmDhU96yh
+https://youtu.be/cx9j7qQAh2I?si=Si8969exM3iZRTLP
 
 
 Aplikasi ini merupakan proyek Ujian Tengah Semester (UTS) untuk mata kuliah Pemrograman Mobile.
